@@ -1,0 +1,64 @@
+baseURL: https://whatgrabsme.org/
+languageCode: en-us
+title: What Grabs Me
+theme: ["PaperMod"]
+
+menus:
+  main:
+    - name: Tech
+      url: /tech/
+      weight: 10
+    - name: BJJ
+      url: /jiujitsu/
+      weight: 20
+    - name: Melee
+      url: /melee/
+      weight: 30
+    - name: RSS
+      url: /index.xml
+      weight: 40
+    
+
+params:
+  mainSections:
+    - tech
+    - jiujitsu
+    - melee
+  images:
+    - /og_image.png
+  assets:
+    favicon: "/poem.png"
+    favicon16x16: "/poem.png"
+    favicon32x32: "/poem.png"
+    apple_touch_icon: "/poem.png"
+  description: "A blog covering a variety of topics, from grappling to tech to competitive gaming"
+  author: "Dillon Draper"
+  homeInfoParams:
+    Title: "What Grabs Me"
+    Content: "A blog by Dillon bringing together my writings on grappling, gaming, technology, and anything else that piques my interest.  My hope is that you find yourself, even if by the smallest of amounts, enriched by the experience of interacting with my work."
+  profileMode:
+    enabled: false
+    title: "What Grabs Me" # optional default will be site title
+    subtitle: "A blog by Dillon bringing collecting writings on grappling, gaming, technology, and anything else that piques my interest.  My hope is that you find yourself, even if by the smallest of margins, enriched by the experience of interacting with my work."
+   #  imageUrl: "<image link>" # optional
+   # imageTitle: "<title of image as alt>" # optional
+   # imageWidth: 120 # custom size
+   #  imageHeight: 120 # custom size
+    buttons:
+      - name: Melee
+        url: "/melee"
+      - name: BJJ
+        url: "/jiujitsu"
+      - name: Tech
+        url: "/tech"
+
+  socialIcons: 
+    - name: "Github"
+      url: "https://github.com/DillonbDraper"
+    - name: "Twitter"
+      url: "https://x.com/DthrowDtilt"
+    - name: "Discord"
+      url: "https://discord.com/users/262672640144179202"
+taxonomies:
+  tag: tags
+  category: categories

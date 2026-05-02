@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>terminal_emulators.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h2 id="forward">Forward</h2>
+<p>Before beginning this piece, I would like to acknowledge a few
+points. I bring these up to preempt criticism and allow the reader to
+understand where I am coming from, but I do not think they should be
+taken to diminish or discount any of the rest of this.</p>
+<ul>
+<li>It probably doesn’t <em>really</em> matter what terminal emulator
+you choose. The overwhelming majority of people using computers day to
+day, and even most developers, probably aren’t using advanced features.
+Even more, those who are using advanced features probably already know
+their tool of choice so well that switching would end up costing them
+more time than it eventually saves.</li>
+<li>I am not in that .1% of roles where my choice of terminal emulator
+is critical to performance. I could do all of my work on the default
+Konsole or Terminal.app easily enough, if I so chose. I also don’t “live
+in the terminal” as an object of philosophical fixation; I am just as
+happy to use a GUI app if it provides a better experience. If that gives
+you pause in listening to me, be advised.</li>
+<li>There is more information here than 99% of users will ever
+want/need. For the vast majority of readers, jumping to either the <a
+href="#the-minimalists">minimalists</a> section or <a
+href="#the-superlatives">superlatives</a> would be the best thing,
+depending on whether you are heavily resource constrained (or just a big
+fan of minimalism) or not.</li>
+</ul>
+<h2 id="terminals-and-their-evaluation">Terminals And Their
+Evaluation</h2>
+<p>There are a number of criteria on which you can evaluate a terminal
+emulator: Available platforms, included features, configurability,
+performance, UX, efficiency, and much more. Common examples of this
+include a given terminals’ support for various image protocols (iterm,
+sixel, and kitty), the amount of configuration options and their ease of
+use, the presence of a built in multiplexing solution, whether they are
+easily extendable through scripting, and more. In this piece I will
+conversationally evaluate all of these things, but also include as much
+objective information as possible. I will do this by listing the
+available platform(s) at the top of each section, and providing a set of
+benchmarks at the bottom. For this I will use Alacritty’s <a
+href="https://github.com/alacritty/vtebench/tree/master">vtebench
+tool</a>, the benchmarking “kitten” from kitty (when possible), and
+testing the terminal’s start time with some combination of Hyperfine
+(Linux), AppTimer (Windows), and the built in sample option (Mac). The
+machine that I will be running most of these measurements on uses an
+Intel i7-12700KF CPU at 5.1Ghz, NVidia 3080Ti GPU, 48GB DDR5 RAM, and a
+2TB NVME SSD. It runs NixOS for the Linux terminals and Windows 11 for
+Windows. For the Mac exclusive ones, I will be using a 2024 Macbook Pro
+with an M4 Pro Silicon chip and 24GB RAM. I will run some cross platform
+comparisons on the Macbook as well to ensure comparisons are reasonably
+fair. Lastly, I will also include RAM utilized while idle. I am not
+personally a huge believer in the utility of benchmarks in this regard
+(most terminals are fast enough and consume few enough resources that it
+won’t really matter), but they may be useful as a rough guideline.</p>
+<h2 id="the-defaults">The Defaults</h2>
+<p>The following terminals are the ones you primarily use because they
+come preinstalled on your system. That isn’t to say that they are bad;
+entire careers have been conducted in Terminal.app, oftentimes by people
+making a lot more money than me. What it means is that these terminals
+all share a handful of characteristics that users should keep in mind
+before committing to using or not using them. These terminals are all
+relatively lightweight, tend to be a little lighter on the need for
+configuration, and are extremely unlikely to be abandoned by their
+developers (the benefit of first party tools). However, they are also
+universally not GPU accelerated (read: a little slower), less
+customizable than some other options, and generally behind on cutting
+age features (usually a drawback to a first party tools).</p>
+<h3 id="konsole">Konsole</h3>
+<p>Konsole is the terminal associated with the KDE Plasma desktop
+environment for Linux. It is one of the best examples of the KDE
+philosophy ecosystem I can think of; maximal in terms of features,
+highly customizable (especially for an included terminal app), and
+altogether attractively designed. As for downsides…there really aren’t
+many. The real “downsides” of Konsole are more about what it does
+<em>worse</em> than other options than about anything it does outright
+wrong. It just isn’t as performant (lacks hardware acceleration),
+configurable, or efficient as the options I would consider to be the
+very best, nor does it have any special integrations with the KDE
+environment that might especially motivate people on that DE to stick
+with it. In my book, Konsole is a textbook example of “good, but not the
+best”. I cannot think of a real reason to recommend it to anyone over
+the very best options, but at the same time it is more than adequate,
+and could be most peoples’ daily driver without issue.</p>
+<h3 id="xfce4-terminal">xfce4-terminal</h3>
+<p>xfce4-terminal (xfce-term) is the terminal associated with the xfce
+Linux distribution, a distro known for being very lightweight and
+resource un-intensive, targeting older or weaker machines. It is a
+common choice for those wishing to “resurrect” an old laptop that no
+longer has the horsepower to run the latest Windows (or heavier Linux
+distro) effectively. The terminal, then is more or less exactly what one
+might expect. It is very lightweight, consuming around 30MB of RAM for
+me whilst idle, among the very lowest of any options that I have tested.
+It also starts up very quickly, the fastest of any options outside of
+the <a href="#the-minimalists">Minimalists</a> section. It actually
+<em>does</em> have image support through the sixel protocol, but does
+not support the Kitty image protocol or have any hardware acceleration.
+Of any of the built-in, distro-specific terminals, I have to say this
+might be my choice for best executed in terms of achieving its goals. As
+of 2026-04-06, xfce distro uses X11, and the primary competition
+xfce-term posses in the minimalist space there is against st-term. While
+st-term is by no means bad, I cannot really say that it is necessarily
+<em>better</em> than xfce-term. Indeed, I personally do not see the
+benefits of switching, and if I were on a very weak machine running the
+xfce distro, this would probably be my terminal of choice.</p>
+<h3 id="terminal.app">Terminal.app</h3>
+<p>Terminal.app is the default Mac terminal, no doubt familiar to many,
+if not all readers. It is also the terminal I have probably used the
+most of any in this piece, having used it for around a year somewhat
+heavily when I switched to using Mac OS for work. Unfortunately, as many
+other users can attest, a very significant portion of my use of
+Terminal.app was listening to other Mac users ask “Why don’t you switch
+to iterm2?” This annoyed me at the time, as I wasn’t particularly
+interested in bothering with various different terminals, but in
+retrospect it was a very legitimate question. Terminal.app <em>is</em>
+configurable in terms of both settings and appearances, but really, it
+plays the little brother role to both iterm2 and other options in
+virtually every way. It is less configurable, less performant, less
+beautiful, and similar in terms of resource consumption. It isn’t awful
+by any means, but unless absolute stability and desire to install no
+extra programs are your only real criteria, I don’t really see much of a
+point to remaining with it. Even for the most die-hard Apple
+enthusiasts, iterm2 out “Macs” this default Macintosh application. Not
+recommended.</p>
+<h3 id="ptyxis">Ptyxis</h3>
+<p>Ptyxis is the terminal currently associated with the GNOME DE for
+Linux, and it appears as though it will be the terminal of choice for
+that platform moving forward. For those unfamiliar, this is signficant
+because GNOME has gone through three terminals (that I know of) in its
+lifetime: GNOME Terminal (classic, minimalist terminal), GNOME Console
+(AKA kgx, an intended upgrade to GNOME Terminal that appears abandoned)
+and now Ptyxis. Of all the terminals that come as defaults with the
+major Linux distros, this is among the most modern available, featuring
+GPU acceleration, highly active development, and a level of
+customizability really only rivaled by KDE Konsole in this “default
+Linux terminal” space. Even more, it has a unique hook: the native
+integration of per-tab container-oriented tools and environments. Put
+simply, each Ptyxis instance (and even each individual tab) can be
+associated with a given container, making switching between multiple
+containers (or opening new tabs within the same container) a breeze
+compared to other offerings. While this is not particularly helpful to
+<em>my</em> personal workflow, I can absolutely see it being relevant to
+a great number of users. I have to say: I am overall pretty impressed
+with Ptyxis, and I think it accomplishes what it sets out to do very
+well, up there with <a href="xfce4-terminal">xfce4-terminal</a>.</p>
+<p>Best For: - Users for whom switching containers is paramount - Users
+very attached to the GNOME environment/toolset</p>
+<h2 id="the-curiosities">The Curiosities</h2>
+<p>These terminals are, for whatever reason or another, not for me, and
+I do not recommend them. However, that doesn’t mean that I believe they
+are <em>bad</em>; Indeed, most of them have some kind of hook (thus the
+name) that might make them interesting to <em>you</em>. Rather, I simply
+believe that either they possess drawbacks I am unwilling to tolerate
+or, are mostly or entirely outmoded by other offerings.</p>
+<h3 id="tabby">Tabby</h3>
+<p>Please do not use Javascript to write your terminal emulator. Just
+because you <em>can</em>, does not mean you <em>should</em>.</p>
+<h3 id="cool-retro-term-crt">Cool-Retro-Term (CRT)</h3>
+<p>CRT is an example of a terminal where I’m not sure if it’s really
+<em>trying</em> to be a serious entry into the terminal space. CRT is
+named as such because it attempts to mimic the appearance of a classic
+cathode ray tube (CRT) television. In that, it succeeds with flying
+colors. However, as a daily driver terminal, I am just not sure why you
+might actually use it. It lacks any kind of image support, and while it
+is hardware accelerated, it still isn’t as fast as a lot of other
+options. It also lacks the extensive configurability of a lot of its
+peers. Add that to the fact that the CRT aesthetic is actually much
+<em>harder</em> to read than standard terminal text, and I can only
+recommend if you value the retro aesthetic above all else. Still, it may
+be worth an install just for the sake of having around to look cool.</p>
+<h3 id="warp">Warp</h3>
+<p>Warp almost merited its own section. It is a very unique case, and I
+have struggled to evaluate it in comparison to other options. For those
+of you who don’t know, Warp is a terminal focused on integrating LLMs/AI
+directly into the terminal experience. It markets itself as “the agentic
+development environment”, and pushes those features <em>hard</em> in all
+of its promotional material. That it is a VC backed entity rather than
+an open source project like the other terminals on this list is also
+worthy of note, as it suggests likely high development velocity but also
+the elevated possibility of becoming abandonware in the feature, should
+the company not work out financially. When using Warp for the first
+time, users are asked to…log in? A strange thing to be sure, but it
+makes sense for a platform focused on paid AI integration. That being
+said, I will not pretend like it wasn’t immediately off putting, and
+felt wrong in a space that is normally about the blooming of a thousand
+free flowers. Ultimately, I decided for this piece to evaluate Warp with
+the AI features disabled, which is mercifully a very convenient toggle.
+This may feel unfair as it effectively disables Warp’s killer app, but
+at the same time AI integration is so far outside what the other options
+in this space are doing that I felt comparison with them on would be
+impossible. With AI integration off, one major positive should be said
+for Warp: it’s very pretty. The default “Warpified” prompt is sleekly
+modern and attractive, and several of the built in backgrounds/color
+options look great. It also comes bundled with a few major features,
+such as its “blocks”: visual groupings for commands and their outputs,
+which can be very nice for visual coherency. Even cooler, these blocks
+can be shared with others using Warp. It also has built in
+completions/suggestions that usually require shell configuration to get
+in the terminal, which isn’t terribly useful to most veterans but is
+probably very nice for new users. It even has its own built in IDE,
+which I question the utility of but may be desirable for those looking
+to unify their workflow under one development platform. Unfortunately, I
+do think that, despite all these positives, the bell ultimately tolls
+for Warp, because it gets a number of the basics wrong. Firstly, all of
+these bells and whistles come at a cost, as Warp uses more than double
+(almost 700MB!) of RAM while idle. Furthermore, despite being a heavily
+developed Rust project, it is slow, noticeably so compared to many
+options and benchmarking quite poorly. It also lacks the configurability
+and extensability of many of the best options in this space, despite
+presenting as a very maximalist choice. With the AI off, Warp certainly
+has redeeming features, but I find it difficult to recommend in light of
+its shortcomings.</p>
+<h3 id="contour">Contour</h3>
+<p>Contour is a terminal I found out about from a forum post by Wez
+Furlong, the creator of <a href="wezterm">WezTerm</a>. Contour is a
+modern GPU accelerated terminal written in C++ focusing on performance,
+and in that it would appear to succeed. Anecdotally, it is one of the
+snappier terminals I have used. Less anecdotally, when using actual
+benchmarks, it lags well behind some of the frontrunners. Still, it’s
+performant to the point that it isn’t really an issue, and has a solid
+look/feel. That being said, I am unsure whether or not it really offers
+anything over options to make it a solid choice. This is an excellent
+example of terminal that doesn’t really do anything <em>wrong</em>
+(except for some strange default keybinds), but at the same time doesn’t
+do enough different/better to stand out from other options, at least in
+my humble opinion.</p>
+<h2 id="the-minimalists">The Minimalists</h2>
+<p>Here we arrive at terminals that deliberately do less. That suck
+less, in one case. These terminals deliberately seek to keep things as
+simple and streamlined as possible, and should appeal to those who find
+most software bloated beyond any real purpose. I am a big enough sucker
+for pretty lights and avant garde nonsense that daily driving these did
+not turn out to be for me, but I certainly see the appeal for a
+significant subset of users.</p>
+<h3 id="simplesuckless-terminal-st">Simple/Suckless Terminal (st)</h3>
+<p>st term in an interesting case: First of all, explaining the name: It
+is a terminal by <a href="https://suckless.org">suckless.org</a>. It is
+commonly referred to as “suckless terminal” colloquially, but seems to
+be called simple terminal or “st” by its maintainers. If you are
+familiar with suckless philosophy, you probably have a decent idea of
+what kind of software this is. If not, a reasonable way of expressing it
+is to say that, in their minds, most software sucks because it does too
+much. Simple terminal then is exactly what you would expect from such a
+group: the absolute most minimal terminal possible. No hardware
+acceleration. No image support. Ligatures? Scrollback? More like BLOAT
+(suckless adherents call <em>everything</em> bloat). As a trade off for
+these things, you get simplicity and blazingfly fast startup times
+(65ms), second only to Foot. That being said, I don’t know if I really
+recommend it. It doesn’t beat xfce4-terminal by enough in any category
+to really push for it, and some of the things it deems bloat I would
+call basic quality of life, particularly scrollback.</p>
+<p>Best for: - Those demanding the utmost (utleast?) minimalism on
+X11</p>
+<h3 id="foot">Foot</h3>
+<p>Foot is a terminal emulator built for the Wayland DE on Linux that
+strives to have the smallest <em>foot</em>print possible. Ha. Puns
+aside, it does an incredible job. It uses the single least amount of RAM
+of any terminal that I have seen (25MB for me whilst idle), a
+ridiculously small binary (&lt;5MB), and has a startup time so fast that
+it borders on imperceptible: ~30ms normally, ~16.5ms when using its
+special client/server configuration, as though it needed to be even
+faster. It also doesn’t even totally eschew image support despite its
+minimalism. Overall, I am a big fan of Foot, and if you are on a Wayland
+DE and want the fastest, lightest terminal available, look no
+further.</p>
+<p>Best for: - Users with extremely limited resources in terms of
+space/hardware power - Usecases where startup time is paramount for one
+reason or another - Fans of minimalism in general</p>
+<p><a href="#foot-emulator-benchmarks">Link To Benchmarks</a></p>
+<h2 id="the-contenders">The Contenders</h2>
+<p>These are good-to-great terminal emulators. They check all the major
+boxes, are feature rich beyond what you might find in the land of
+defaults, and generally have no glaring issues. While I don’t recommend
+these <em>quite</em> as strongly as I might the superlatives, they are
+still strong offerings that you could spend your whole career with and
+be quite happy.</p>
+<h2 id="alacritty">Alacritty</h2>
+<p>Alacritty’s influence and legacy in the realm of terminal emulators
+can be scarcely overstated. It ushered in the modern era of GPU
+accelerated terminal emulators, and remains the gold standard for speed
+to this day. In fact, its parser is used in many other terminals in the
+ecosystem. It is rock solid, stable, and really all but beyond approach
+in what it does. Why, then, do I not give it the highest possible
+recommendation? Because I think that in 2026 it exists in a bit of a no
+man’s land. It <em>is</em> very fast, but so are kitty and Ghostty, and
+both of those distantly outstrip it in terms of features. It does have a
+minimal footprint compared to those…but if you want minimalism, Foot is
+<em>much</em> more minimal while also being fast at a lot of tasks. If
+you’re looking for a feature-light, midweight terminal that works at
+blistering speeds, Alacritty cannot be beat. I simply question the size
+of the audience for whom that is the ideal.</p>
+<h2 id="rio">Rio</h2>
+<p>Rio is a modern terminal emulator built in Rust, and has a surprising
+amount of features for what appears to be mostly a one-man-band project.
+Perhaps its most unique “hook” is its integration with RetroArch
+shaders, allowing a degree of customization over the look/feel of your
+terminal that can’t really be had anywhere else. These shaders can range
+from CRT emulation like Cool-Retro-Term all the way to the truly
+bizarre. Productive? Probably not, but they are genuinely cool. Rio also
+supports a configurable “hints” system that can show/suggest keybinds
+where relevant, which is a neat feature. Overall, Rio does a lot right:
+it’s fast, feature rich, supports every image protocol, and has a much
+smaller binary footprint than similar competitors. Unfortunately, I also
+think it just tends to be a little buggier in my testing than many of
+the other options (I just opened it to an immediate freeze while typing
+this), and it doesn’t do quite enough good to launch it into the <a
+href="the%20superlatives">Superlatives</a> category regardless.</p>
+<h2 id="iterm2">iTerm2</h2>
+<p>iTerm2 (iterm) is a very old, very feature complete terminal that
+stands as one of the jewels of the MacOS development ecosystem, widely
+beloved by users for well over a decade at this point. It is the gold
+standard for color support, introduced its own image protocol, and had
+built in multiplexing long before any of the Linux options dared to try
+it. It’s not all roses, however: iterm is slow compared to many of the
+modern options, favors an absolutely sprawling GUI config rather than
+(a) config file(s) (a matter of taste, but I find the latter strongly
+preferable), and has somewhat dated and less than excellent
+documentation. I also find its scripting cumbersome compared to, say,
+WezTerm. Still, it has <em>a lot</em> of devoted adherents, and in my
+research for this piece I think I discovered why: iterm was good before
+anything else was. All of those “modern” features I listed? iterm was
+doing them 10 years ago, long before anyone else. I don’t use iterm
+anymore for a number of reasons (I think other choices have mostly
+surpassed it, and I value having cross platform solutions), but it is
+easy to see why it has built such a strong following. It has faithfully
+carried users from before I ever wrote “Hello World” into the modern day
+while scarcely showing its age, and that is something to be proud
+of.</p>
+<p>Best for: - Happy users who don’t feel like a switch - Mac
+loyalists</p>
+<h2 id="the-superlatives">The Superlatives</h2>
+<p>The following terminals can be used by everyone, but in my opinion
+also represent the true endgame for terminal enthusiasts. These
+terminals vary significantly in terms of their strengths, empahsis, and
+underlying technologies leveraged, but all share the following: Great
+user experience, high configurability, and cutting edge features. I
+recommend all of the terminals here unreservedly, and have enjoyed my
+time with each of them.</p>
+<h3 id="wezterm">WezTerm</h3>
+<p>WezTerm is a a terminal emulator by Wez Furlong, written in Rust and
+featuring all the goodies one could imagine in a modern terminal
+emulator. That isn’t an exaggeration - If I had to pick the single most
+feature-rich terminal, I would pick WezTerm. It might be easier to list
+the things it <em>doesn’t</em> do. It supports every image protocol
+under the sun. It has a special “copy mode” to enable easy selection of
+text without reaching for the mouse. It has its own special enhanced ssh
+integration with a built in custom library. It possesses built in
+support for multiplexing without the use of tmux/screen/zellij/any other
+third party solution. It is a pioneer of highly configurable scrollback
+with a multitude of unique settings. It has very thorough and digestible
+<a href="https://wezterm.org">documentation</a>. Rather than a GUI
+config or a toml/json/conf file, it is configured in the Lua scripting
+language, allowing condional config and scripting potential that is
+virtually unmatched in the terminal space. With all of these positives,
+one might ask: Why would you ever use another terminal? For starters, it
+isn’t the fastest, or even close. In terms of both startup time and
+benchmarking metrics, it is easily the slowest of the Superlatives. It
+is also the least actively maintained of this group, not seeing a major
+release since Feb. 2024. Furthermore, most of these fun, advanced
+features require a significant amount of configuration to take full
+advantage of, which brings us to the next point: Lua config can be a
+double edged sword. While the incredible amount of extensibility it
+offers is no doubt appealing to many, just as many others won’t want to
+put a lot of time into actually <em>programming</em> their terminal
+config. WezTerm’s defaults are really nothing special, and unless you’re
+already a Lua wiz (looking at you, Neovim users), it takes little bit of
+work to get where you want to be, certainly the most of any of the
+maximalist emulators. Even still, all of the positives I previously
+mentioned still stand, and it’s still fast enough that most people would
+never perceive the difference in speed without actively looking. All in
+all, WezTerm comes <em>highly</em> recommended from me.</p>
+<p>Best for: - People who demand the utmost in customizability from
+their terminal - Tinkerers: those who genuinely enjoy exploring the
+possiblities with tooling.</p>
+<h3 id="kitty">kitty</h3>
+<p>kitty’s tagline is “If you live in the terminal, then Kitty is made
+for YOU!” A bold, albeit playful claim. One that of course begs the
+question: Does Kitty live up to it? I would say yes, to the point where
+I will open this section by saying that Kitty is my current terminal of
+choice, and I have been very happy with it. Firstly the good: Kitty is
+extremely performant. In fact it is in contention with Alacritty for
+<em>most</em> performant terminal, and is infinitely more feature rich
+than that one competitor. In terms of what Kitty can do, its only real
+competition is WezTerm in terms of feature richness and flexibility.
+Configuration in kitty is done in a massive kitty.conf file, which can
+be intimidating at first, but is probably the single most exhaustively
+commented file I have ever encountered. It also does not require the
+user to learn Lua for configuration if they are not familiar (although I
+wouldn’t call basic Lua terribly prohibitive), which is also a plus. The
+existence of a config file might suggest that things are less scriptable
+than with WezTerm, but that is not necessarily the case. Instead of a
+using the same setup for configuration and scripting like WezTerm does
+with Lua, Kitty has the concept of “kittens” (awww), which are small
+Python (and sometimes Go) programs that can be used to script terminal
+behavior. These kittens can be very powerful, with some of the built in
+ones enabling a menu of hotswappable themes, a clipboard protocol that
+works even over ssh, a custom in-terminal diffing solution, and much
+more. Overall, I would say that creating your own kittens has a somewhat
+higher barrier to entry than just extending your Lua config in WezTerm,
+but this is balanced by the fact that basic configuration with a .conf
+file requires a lesser initial investment. In terms of multiplexing,
+kitty’s solution is called “sessions”, which are simple scripts in
+.kitty-sessions files that define a layout/programs to launch for kitty
+and are then called with a keybind or command. With all of those
+positives, one might be tempted to ask “What are the downsides of
+kitty?” And truthfully, one of the most positive things I can say about
+it is that the shoe never really drops. I have yet to really find any
+major downsides with the terminal itself. Indeed, the only prevalent
+complaint I see other people have with kitty is a dislike of the primary
+maintainer (Kovid Goyal, who is also the main author of Calibre), who is
+known to be more than a little prickly at times. As far the program
+itself though, kitty knocks it out of the park, and I can’t think of a
+stronger recommendation than reiterating that it’s what I use every
+day</p>
+<p>Best for: - Terminal users willing to do some configuration, but not
+necessarily as much as with WezTerm - Those demanding the utmost
+performance while still maintaining the highest level of feature
+completeness</p>
+<h3 id="ghostty">Ghostty</h3>
+<p>Ghostty is by far the newest of the terminals in this section, being
+less than two years old (for its public release). It is known for being
+what is probably the flagship application for the relatively new low
+level language Zig, This is significant not just for language
+enthusiasts, but for what it means for the ecosystem: being the public
+face of a whole language means Ghostty is likely to get a lot of extra
+attention, and with extra attention comes extra development and more
+maintainers. Indeed, despite being less than a quarter of kitty’s age,
+it already has a similar number of commits from an even greater number
+of contributors. Ghostty is also known for using native rendering for
+each major platform. WezTerm and kitty look like themselves regardless
+of whether the user is on Windows, Mac, or Linux. By contrast Ghostty
+looks like a native Mac app on my Macbook, and the sharpness and
+coherency of the design immediately jumps out. As for performance,
+Ghostty does not <em>quite</em> meet the lofty standards set by
+Alacritty and Kitty, but in truth the margin of difference is small
+enough that it is unlikely to be meaningful in the real world; it is not
+the difference between slow and fast, but rather lightspeed and
+ludicrous speed. As for configuration and features, Ghostty does lag
+slightly behind its older compatriots. Ghostty config is done in a very
+simple .ghostty file that uses an extremely simplified “key=value”
+syntax, and relies on online reference documentation to provide a list
+of the available options. It also lacks any native support for advanced
+scripting features that Kitty and Wezterm have, as well as no built in
+session/multiplexing abilities, relying on tmux or similar external
+software. This might lead the reader to wonder “If it’s just fast and
+pretty, does it really stack up to the best?” The answer to that is
+“yes”, for two reasons, the first of which was already touched on: It
+has the most active development of any terminal. The momentum behind it
+is incredible, and if I had to pick a terminal cart to attach my horse
+to for the future, I would choose Ghostty. It does not have quite all of
+the niceties of Kitty/WezTerm <em>now</em>, but I can very easily
+imagine a future world in which it does. The second reason is even more
+important, and one that we have yet to touch on: The fact that, out of
+the box, Ghostty blows every other terminal away. Other terminals take
+what I would call an “Emacs” approach to configuration: they are
+incredibly power, but little to nothing is done for you. The concept of
+a “sensible default” is treated as an affront to generations of
+tinkerers who enjoy spending an inordinate amount of time configuring
+and hacking to make the software truly their own. Ghostty takes the
+opposite approach, aiming for “zero config for most users”, and it
+shows. Ghostty is imminently usable and beautiful immediately after
+installation, and many of the nicest things about it are discoverable
+without so much as reading a line of documentation. I myself <em>am</em>
+one of those tinkering weirdos, but I also recognize that the majority
+of users are not, and I truly wish that other terminals would take a
+lesson from Ghostty and ship an experience that doesn’t require digging
+to find any of the magic. Until then, they run absolute laps around the
+competition in this department.</p>
+<p>Best for: - People who just want to download a terminal and be done
+with it, without missing out. - People playing the long game and
+choosing based on what might be best in the future - Zig enthusiasts</p>
+<h3 id="closing-thoughts">Closing Thoughts:</h3>
+<p>I enjoyed trying out so many different terminals and learning more
+about them. I did not at all enjoy compiling the benchmarks, to the
+point that it threatened to sour me on the whole process. Neverthless,
+it is done now, and I hope that it may provide a measure of value to at
+least a small number of readers.</p>
+<h2 id="benchmarks-section">Benchmarks Section</h2>
+<p>Below are the benchmarks taken for each of the terminal emulators.
+They are here at the bottom for ease of comparison, and also so that
+they do not overwhelm the rest of the text.</p>
+<h2 id="foot-emulator-benchmarks">Foot Emulator Benchmarks</h2>
+<p>Idle RAM usage: 25 MB (normal), 18 MB (server mode), 31 MB total
+(active server/client)</p>
+<h4 id="kitty-benchmark-results">1) Kitty Benchmark Results</h4>
+<table>
+<thead>
+<tr>
+<th>Emulator</th>
+<th>Test</th>
+<th>Time</th>
+<th>Throughput (MB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foot</td>
+<td>Only ASCII chars</td>
+<td>717.43ms</td>
+<td>278.8</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>Unicode chars</td>
+<td>1.57s</td>
+<td>115.6</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>CSI codes with few chars</td>
+<td>1.65s</td>
+<td>60.6</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>Long escape codes</td>
+<td>2.2s</td>
+<td>356.1</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>Images</td>
+<td>1.15s</td>
+<td>463.3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="vtebench-results">2) vtebench Results</h4>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 34%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th>Emulator</th>
+<th>Test</th>
+<th>Samples</th>
+<th>Payload</th>
+<th>Avg Time</th>
+<th>P90 Time</th>
+<th>Std Dev</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foot</td>
+<td>cursor_motion</td>
+<td>2425</td>
+<td>1.22 MiB</td>
+<td>3.68ms</td>
+<td>&lt; 4ms</td>
+<td>0.48ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>dense_cells</td>
+<td>2115</td>
+<td>1.29 MiB</td>
+<td>4.12ms</td>
+<td>&lt; 5ms</td>
+<td>0.35ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>light_cells</td>
+<td>1940</td>
+<td>1 MiB</td>
+<td>4.61ms</td>
+<td>&lt; 5ms</td>
+<td>0.55ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling</td>
+<td>81</td>
+<td>1 MiB</td>
+<td>123.32ms</td>
+<td>&lt; 131ms</td>
+<td>7.21ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling_bottom_region</td>
+<td>79</td>
+<td>1 MiB</td>
+<td>127.2ms</td>
+<td>&lt; 139ms</td>
+<td>10.09ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling_bottom_small_region</td>
+<td>81</td>
+<td>1 MiB</td>
+<td>123.73ms</td>
+<td>&lt; 135ms</td>
+<td>7.78ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling_fullscreen</td>
+<td>1658</td>
+<td>1 MiB</td>
+<td>5.57ms</td>
+<td>&lt; 6ms</td>
+<td>0.7ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling_top_region</td>
+<td>84</td>
+<td>1 MiB</td>
+<td>119.69ms</td>
+<td>&lt; 128ms</td>
+<td>7.63ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>scrolling_top_small_region</td>
+<td>74</td>
+<td>1 MiB</td>
+<td>136.05ms</td>
+<td>&lt; 147ms</td>
+<td>8.11ms</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>unicode</td>
+<td>1121</td>
+<td>1.06 MiB</td>
+<td>8.39ms</td>
+<td>&lt; 8ms</td>
+<td>5.46ms</td>
+</tr>
+</tbody>
+</table>
+<h4 id="startup-time-hyperfine-normal-mode">3) Startup Time (hyperfine,
+normal mode)</h4>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 6%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th>Emulator</th>
+<th>Mode</th>
+<th>Mean Time</th>
+<th>Std Dev</th>
+<th>Min Time</th>
+<th>Max Time</th>
+<th>Runs</th>
+<th>User CPU</th>
+<th>System CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foot</td>
+<td>Normal</td>
+<td>29.7 ms</td>
+<td>1.6 ms</td>
+<td>26.7 ms</td>
+<td>34.4 ms</td>
+<td>100</td>
+<td>37.2 ms</td>
+<td>7.6 ms</td>
+</tr>
+</tbody>
+</table>
+<h4 id="startup-time-hyperfine-client-mode-with-server-running">4)
+Startup Time (hyperfine, client mode with server running)</h4>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 22%" />
+<col style="width: 10%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th>Emulator</th>
+<th>Mode</th>
+<th>Mean Time</th>
+<th>Std Dev</th>
+<th>Min Time</th>
+<th>Max Time</th>
+<th>Runs</th>
+<th>User CPU</th>
+<th>System CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foot</td>
+<td>Client (server alive)</td>
+<td>16.7 ms</td>
+<td>0.9 ms</td>
+<td>14.4 ms</td>
+<td>20.1 ms</td>
+<td>158</td>
+<td>0.5 ms</td>
+<td>0.5 ms</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
