@@ -3,6 +3,12 @@ languageCode: en-us
 title: What Grabs Me
 theme: ["PaperMod"]
 
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
 menus:
   main:
     - name: Tech
@@ -14,6 +20,9 @@ menus:
     - name: Melee
       url: /melee/
       weight: 30
+    - name: Search
+      url: /search/
+      weight: 35
     - name: RSS
       url: /index.xml
       weight: 40
@@ -59,6 +68,27 @@ params:
       url: "https://x.com/DthrowDtilt"
     - name: "Discord"
       url: "https://discord.com/users/262672640144179202"
+  fuseOpts:
+    isCaseSensitive: false
+    includeScore: false
+    includeMatches: false
+    minMatchCharLength: 2
+    shouldSort: true
+    findAllMatches: false
+    keys:
+      - name: title
+        weight: 0.85
+      - name: summary
+        weight: 0.08
+      - name: content
+        weight: 0.05
+      - name: permalink
+        weight: 0.02
+    location: 0
+    threshold: 0.3
+    distance: 100
+    ignoreLocation: true
+    limit: 25
 taxonomies:
   tag: tags
   category: categories

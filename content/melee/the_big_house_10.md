@@ -1,7 +1,7 @@
 ---
 date: '2022-10-09T18:55:24-05:00'
 draft: false
-title: ' The Big House 10'
+title: 'The Big House 10'
 categories: ["melee"]
 tags: ["tourney"]
 summary: " "

@@ -107,17 +107,17 @@ Best for:
 
 These are good-to-great terminal emulators.  They check all the major boxes, and I think deserve serious consideration from users.  While I don't recommend these *quite* as strongly as I might the superlatives, they are still strong offerings that you could spend your whole career with and be quite happy.
 
-## Alacritty
+### Alacritty
 
 Alacritty's influence and legacy in the realm of terminal emulators can scarcely be overstated.  It ushered in the modern era of GPU accelerated terminal emulators, and remains the gold standard for speed to this day.  In fact, its parser is used in many other terminals in the ecosystem.  It is rock solid, stable, and really all but beyond reproach in what it does.  Why, then, do I not give it the highest possible recommendation?  Because I think that in 2026 it exists in a bit of a no man's land.  It *is* very fast, but so are kitty and Ghostty, and both of those distantly outstrip it in terms of features.  It does have a minimal footprint compared to those...but if you want minimalism, Foot is *much* more minimal while also being fast at a lot of tasks.  If you're looking for a feature-light, midweight terminal that works at blistering speeds, Alacritty cannot be beat.  I simply question the size of the audience for whom that is the ideal.
 
 [Link To Benchmarks](#alacritty-emulator-benchmarks)
 
-## Rio
+### Rio
 
 Rio is a modern terminal emulator built in Rust, and has a surprising amount of features for what appears to be mostly a one-man-band project.  Perhaps its most unique "hook" is its integration with RetroArch shaders, allowing a degree of customization over the look/feel of your terminal that can't really be had anywhere else.  These shaders can range from CRT emulation like Cool-Retro-Term all the way to the truly bizarre.  Productive?  Probably not, but they are genuinely cool.  Rio also sports a configurable "hints" system that can show/suggest keybinds where relevant, which is a neat feature.  Overall, Rio does a lot right: it's fast, feature rich, supports every image protocol, and has a much smaller binary footprint than similar competitors.  Unfortunately, I also think it just tends to be a little buggier in my testing than many of the other options (I just opened it to an immediate freeze while typing this), and it doesn't do quite enough good to launch it into the [Superlatives](the superlatives) category regardless.
 
-## iTerm2
+### iTerm2
 
 iTerm2 (iterm) is a very old, very feature complete terminal that stands as one of the jewels of the MacOS development ecosystem, widely beloved by users for well over a decade at this point.  It is the gold standard for color support, introduced its own image protocol, and had built in multiplexing long before any of the Linux options I have covered dared to try it.  It's not all roses, however: iterm is slow compared to many of the modern options (slow enough I thought something might be wrong while benchmarking it), favors an absolutely sprawling GUI config rather than file-based config (a matter of taste, but I find the latter strongly preferable), is very resource hungry at <350MB of idle RAM consumption, and has somewhat dated and less than excellent documentation.  I also find its scripting cumbersome compared to, say, WezTerm.  Still, it has *a lot* of devoted adherents, and in my research for this piece I believe I discovered why: iterm was "good" before anything else was.  All of those "modern" features I listed? iterm was doing them 10 years ago, long before anyone else.  I don't use iterm anymore for a number of reasons (I think other choices have mostly surpassed it, and I value having cross platform solutions), but it is easy to see why it has built such a strong following.  It has faithfully carried users from before I ever wrote "Hello World" into the modern day while scarcely showing its age, and that is something to be proud of.  
 

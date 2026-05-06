@@ -3,6 +3,7 @@ title: "About This Blog"
 date: "2026-04-30T20:30:00-05:00"
 draft: false
 pinned: true
+searchHidden: true
 categories: []
 tags: []
 description: "Find Out if You've Come To Right Place"

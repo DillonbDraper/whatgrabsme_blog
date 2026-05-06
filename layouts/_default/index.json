@@ -1,0 +1,8 @@
+{{- $pages := where site.RegularPages "Params.searchHidden" "!=" true -}}
+{{- $pages = where $pages "Layout" "!=" "archives" -}}
+{{- $pages = where $pages "Layout" "!=" "search" -}}
+{{- $index := slice -}}
+{{- range $pages -}}
+  {{- $index = $index | append (dict "title" .Title "content" .Plain "permalink" .Permalink "summary" .Summary) -}}
+{{- end -}}
+{{- $index | jsonify -}}
