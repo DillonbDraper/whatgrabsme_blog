@@ -94,7 +94,7 @@ Best for:
 
 ### Foot
 
-Foot is a terminal emulator built for the Wayland DE on Linux that strives to have the smallest *foot*print possible.  Ha.  Puns aside, it does an incredible job.  It uses the single least amount of RAM of any terminal that I have seen (25MB for me whilst idle), a ridiculously small binary (<5MB), and has a startup time so fast that it borders on imperceptible: ~30ms normally, ~16.5ms when using its special client/server configuration, as though it needed to be even faster.  It also doesn't even totally eschew image support despite its minimalism.  Overall, I am a big fan of Foot, and if you are on a Wayland DE and want the fastest, lightest terminal available, look no further.
+Foot is a terminal emulator built for the Wayland display server  on Linux that strives to have the smallest *foot*print possible.  Ha.  Puns aside, it does an incredible job.  It uses the single least amount of RAM of any terminal that I have seen (25MB for me whilst idle), a ridiculously small binary (<5MB), and has a startup time so fast that it borders on imperceptible: ~30ms normally, ~16.5ms when using its special client/server configuration, as though it needed to be even faster.  It also doesn't even totally eschew image support despite its minimalism.  Overall, I am a big fan of Foot, and if you are on a Wayland DE and want the fastest, lightest terminal available, look no further.
 
 Best for:
 - Users with extremely limited resources in terms of space/hardware power
