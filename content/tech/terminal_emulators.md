@@ -166,7 +166,7 @@ Best for:
 
 ### Closing Thoughts:
 
-I enjoyed trying out so many different terminals and learning more about them.  I did not at all enjoy compiling the benchmarks, to the point that it threatened to sour me on the whole process.  Neverthless, it is done now, and I hope that it may provide a measure of value to at least a small number of readers.
+I enjoyed trying out so many different terminals and learning more about them.  I did not at all enjoy compiling the benchmarks; I'm just not that specific brand of nerd.  More importantly, it should be noted that this is a very mature, very seemingly "complete" space, and so it is inspiring to see the ecosystem so dynamic and thriving to this day.
 
 ## Benchmarks Section
 
