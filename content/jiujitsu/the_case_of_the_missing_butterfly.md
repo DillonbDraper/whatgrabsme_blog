@@ -1,5 +1,5 @@
 ---
-date: '2026-05-24T20:43:25-05:00'
+date: '2026-05-24T13:25:24-05:00'
 draft: false
 title: 'The Case Of The Missing Butterfly'
 categories: ["bjj"]
