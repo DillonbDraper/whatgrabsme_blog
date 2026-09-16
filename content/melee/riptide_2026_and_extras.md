@@ -68,7 +68,7 @@ Iceking is a player that I think is quite good, and on paper had an excellent ru
 
 ### Special Jiu-Jitsu Aside
 
-If you don't care about this or think it's weird to include, please just skip this.  However, it keeps popping up tournaments, so I figured I would address it. 
+If you don't care about this or think it's weird to include, please just skip this.  However, it keeps popping up at tournaments, so I figured I would address it. 
 
 Many people know that I practice a martial art called Brazilian Jiu-Jitsu (BJJ).  I *know* that many people know this, because they come up to me at events and talk to me about it. This used to be something that happened only occasionally, but now reliably happens a couple of times almost every major. That isn't necessarily a bad thing; I love BJJ and am unashamed of it, but I wanted to take a moment to explain my history with it and why I may seem reluctant to bite on potential conversations. 
 
