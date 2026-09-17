@@ -58,7 +58,7 @@ I don't think anyone expected me to take this set, but I went into it relatively
 
 #### Vs Blandeezy
 
-I opened the set on Youtube to review it and make sure my frustrations with the set were valid before writing, and there were *literally* more than 10 miscues in the first minute of gameplay.  I paused with the game clock at 7:08 of game one and am not sure I can continue.  Good lord, who is this Marth and why does the answer have to be "Grab"? I haven't the slightest idea *why* the gameplay here was so bad.  I was nervous, sure, but I've had a thousand sets where I was this nervous or worse and put forth far better play. My neutral was was stilted and lacked confidence.  My punish routes were often incorrect and always poorly executed.  My edgeguards looked straight out of a 2018 VOD.  Thank God Blandeezy played horribly too and I was able to get the W, because that is the only way the W was happening.
+I opened the set on Youtube to review it and make sure my frustrations with the set were valid before writing, and there were *literally* more than 10 miscues in the first minute of gameplay.  I paused with the game clock at 7:08 of game one and am not sure I can continue.  Good lord, who is this Marth and why does the answer have to be "Grab"? I haven't the slightest idea *why* the gameplay here was so bad.  I was nervous, sure, but I've had a thousand sets where I was this nervous or worse and put forth far better play. My neutral was was stilted and lacked confidence.  My punish routes were often incorrect and always poorly executed.  My edgeguards looked straight out of a 2018 VOD.  Thank God Blandeezy played horribly too, because that is the only way I was getting the W here.
 
 #### Vs Iceking
 
