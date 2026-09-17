@@ -46,7 +46,7 @@ My first set was against a Falco called Twincitiesqueen.  I don't think this pla
 
 #### Vs Freky
 
-Freky is a veteran MW Puff player/former TO who I was surprised at playing this early, just on name recognition.  This one was a little bit weird.  Game one was fairly close, but I realized towards the end of it that Freky had mostly given up on trying to beat me in neutral and was just fishing for low percentage rest setups.  I then played around the traps and won games 2 and 3 in blowout fashion. I'm not really sure what to say about it, honestly - on one hand, it was almost certainly the best I played all tournament.  On the other, I wish Freky had tried more seriously to outplay me, because I think they could have presented a much greater threat if they just believed in their own ability, and tried sincerely to out play me. An odd situation all around.
+Freky is a veteran MW Puff player/former TO who I was surprised at playing this early, just on name recognition.  This one was a little bit weird.  Game one was fairly close, but I realized towards the end of it that Freky had mostly given up on trying to beat me in neutral and was just fishing for low percentage rest setups.  I then played around the traps and won games 2 and 3 in blowout fashion. I'm not really sure what to say about it, honestly - on one hand, it was almost certainly the best I played all tournament.  On the other, I wish Freky had tried more seriously to outplay me, because I think they could have presented a much greater threat if they just believed in their own ability. An odd situation all around.
 
 #### Vs Nakamaman
 
